@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFinal.MenuPage"
+             >
+
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#333333" />
+            <Setter Property="Margin" Value="0,10" />
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            <Setter Property="SeparatorColor" Value="#DDDDDD" />
+        </Style>
+        <Style TargetType="TextCell">
+            <Setter Property="DetailColor" Value="#666666" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="Margin" Value="0,10" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="BackgroundColor" Value="#EEEEEE" />
+            <Setter Property="PlaceholderColor" Value="#AAAAAA" />
+            <Setter Property="TextColor" Value="#333333" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,20" />
+            <Setter Property="BackgroundColor" Value="#2196F3" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="CornerRadius" Value="25" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="450" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="0"   >
+            <Label Text="Menu" HorizontalOptions="Center" />
+            <ListView x:Name="dishesListView"
+                      ItemsSource="{Binding Dishes}"
+                      SelectedItem="{Binding SelectedDish}">
+
+                <ListView.ItemTemplate  >
+                    <DataTemplate  >
+                        <ViewCell  >
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal" Margin="0,15,0,15" >
+                                    <Label Text="id:" FontSize="Small" />
+                                    <Label Text="{Binding Id}" FontSize="Small" />
+                                    <Label Text="  name:" FontSize="Small" />
+                                    <Label Text="{Binding Name}" FontSize="Small" />
+                                    <Label Text="  Price:" FontSize="Small" />
+                                    <Label Text="{Binding Price, StringFormat='${0:N2}'}"  FontSize="Small" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,0,0,15" >
+                                    
+                                    <Label Text="{Binding Description}" />
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+        </StackLayout>
+
+
+        <Grid Grid.Column="1" Margin="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Update Dish" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" />
+
+            <Label Text="Id:" Grid.Row="1" Grid.Column="0" />
+            <Entry Text="{Binding SelectedDish.Id}" x:Name="dishIdEntry" Grid.Row="1" Grid.Column="1" />
+
+            <Label Text="Name:" Grid.Row="2" Grid.Column="0" />
+            <Entry  x:Name="dishNameEntry" Grid.Row="2" Grid.Column="1" />
+
+            <Label Text="Description:" Grid.Row="3" Grid.Column="0" Margin="0,10,0,0" />
+            <Entry  x:Name="dishDescriptionEntry" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" />
+
+            <Label Text="Price:"  Grid.Row="4" Grid.Column="0" />
+            <Entry Grid.Row="4" x:Name="dishPriceEntry" Grid.Column="1" Keyboard="Numeric" VerticalOptions="Center" />
+
+            <Button Text="Save" Grid.Row="6" Grid.Column="1" VerticalOptions="End" />
+            <Button Text="Update"
+                    Clicked="Update_Clicked"
+                    Grid.Row="6" Grid.Column="1" 
+                    VerticalOptions="End" />
+        </Grid>
+
+
+    </Grid>
+
+
+
+
+</ContentPage>

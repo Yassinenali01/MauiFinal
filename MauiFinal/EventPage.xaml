@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFinal.EventPage"
+             Title="EventPage">
+
+
+    
+
+    
+
+    <StackLayout>
+        <ListView x:Name="eventsListView"
+                  ItemsSource="{Binding Events}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ID: " />
+                                <Label Text="{Binding Id}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Name: " />
+                                <Label Text="{Binding Name}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Description: " />
+                                <Label Text="{Binding Description}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Capacity: " />
+                                <Label Text="{Binding Capacity}" />
+                            </StackLayout>
+                            <Button Text="Delete"
+                                    Clicked="OnDeleteClicked"
+                                    Command="{Binding DeleteEventCommand}"
+                                    CommandParameter="{Binding Id}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+
+
+
+
+</ContentPage>

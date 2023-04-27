@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFinal.MainPage">
+
+    <Grid BackgroundColor="#F2F2F2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="420" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollView Grid.Column="0" VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20">
+                <Label Text="Employee List"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   Margin="0,20,0,10"/>
+
+                <ListView x:Name="employeeList"
+                      BackgroundColor="#FFFFFF"
+                      RowHeight="90"
+                      SeparatorVisibility="Default"
+                      SeparatorColor="#C3C3C3"
+                      ItemTemplate="{StaticResource EmployeeTemplate}">
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Grid.Column="1" Padding="20" VerticalOptions="FillAndExpand">
+            <Label Text="Add Employee"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   Margin="0,20,0,10"/>
+
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Entry x:Name="employeeNameEntry"
+                       Placeholder="Name"
+                       HeightRequest="60"
+                       BackgroundColor="#FFFFFF"
+                       TextColor="#333333"
+                       FontSize="16"/>
+                <Entry x:Name="employeeIdEntry"
+                       Placeholder="Id"
+                       HeightRequest="60"
+                       BackgroundColor="#FFFFFF"
+                       TextColor="#333333"
+                       FontSize="16"/>
+                <Entry x:Name="employeeEmailEntry"
+                       Placeholder="Email"
+                       HeightRequest="60"
+                       BackgroundColor="#FFFFFF"
+                       TextColor="#333333"
+                       FontSize="16"/>
+            </StackLayout>
+
+            <Button Text="Add"
+                    Clicked="OnAddClicked"
+                    BackgroundColor="#007AFF"
+                    TextColor="#FFFFFF"
+                    FontSize="16"
+                    Margin="0,20,0,0"
+                    HeightRequest="60"
+                    CornerRadius="8"/>
+        </StackLayout>
+    </Grid>
+
+    <ContentPage.Resources>
+        <!-- Updated styling for employee list -->
+        <DataTemplate x:Key="EmployeeTemplate">
+            <ViewCell>
+                <StackLayout Padding="10"
+                             BackgroundColor="#FFFFFF"
+                             Margin="0,10,0,0"
+                             
+                             >
+                    <Label Text="{Binding Name}"
+                           FontSize="20"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,10"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="{Binding Id}"
+                               FontSize="16"
+                               TextColor="#333333"/>
+                        <Label Text="{Binding Email}"
+                               FontSize="16"
+                               TextColor="#333333"/>
+                    </StackLayout>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+</ContentPage>
+    
+    
+
+    
+    
